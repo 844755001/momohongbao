@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.liuchang.momohongbao"
+        minSdkVersion 23
+        targetSdkVersion 27
+        versionCode 1
+        versionName "v1.0.0"
+        ndk {
+            abiFilters 'armeabi', 'armeabi-v7a', "x86"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildToolsVersion '27.0.3'
+}
+
+greendao {
+    schemaVersion 1
+    daoPackage "com.liuchang.momohongbao.model.db"
+    targetGenDir "src/main/java/"
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:27.1.0'
+    implementation 'com.jakewharton:butterknife:8.5.1'
+    implementation 'com.android.support:design:27.1.0'
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'org.greenrobot:greendao:3.2.2'
+    implementation 'com.rmtheis:tess-two:8.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+}
